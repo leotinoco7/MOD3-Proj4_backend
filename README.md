@@ -29,3 +29,9 @@ npm run dev
 ## 📄 Licença
 
 Este projeto está sob a licença (GNU General Public License v3.0) - veja o arquivo [LICENSE.md](https://github.com/leotinoco7/MOD3-PROJ1/blob/main/LICENSE) para detalhes.
+
+... TO DO:
+
+- db atlas
+- models
+- auth, jwt, token etc
