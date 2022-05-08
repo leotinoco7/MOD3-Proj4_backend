@@ -1,4 +1,4 @@
-# MOD3-Proj3 - API RICKY AND MORTY
+# MOD3-Proj4 - API RICKY AND MORTY
 
 Projeto para construir o back-end no modelo CRUD de um cadastro de personagens, dessa vez utilizando o Moongose como Database e o Swagger para visualizar a API
 
@@ -29,9 +29,3 @@ npm run dev
 ## 📄 Licença
 
 Este projeto está sob a licença (GNU General Public License v3.0) - veja o arquivo [LICENSE.md](https://github.com/leotinoco7/MOD3-PROJ1/blob/main/LICENSE) para detalhes.
-
-... TO DO:
-
-- db atlas
-- models
-- auth, jwt, token etc
