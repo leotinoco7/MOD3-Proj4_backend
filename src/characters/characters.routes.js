@@ -6,11 +6,11 @@ const swaggerDocument = require('../../swagger.json');
 router.use('/api-docs', swaggerUi.serve);
 router.get('/api-docs', swaggerUi.setup(swaggerDocument));
 
-const charactersController = require('../controllers/characters.controller');
+const charactersController = require('../characters/characters.controller');
 const {
   validId,
   validObjectBody,
-} = require('../middlewares/characters.middleware');
+} = require('../characters/characters.middleware');
 
 router.get('/', charactersController.findCharactersController);
 

@@ -10,6 +10,27 @@ const findCharactersController = async (req, res) => {
   res.send(allCharacters);
 };
 
+const findByNameController = async (req, res) => {
+  const { message } = req.query;
+
+  const chars = await charactersService.findCharacterByNameService(message);
+
+  if (chars.length === 0) {
+    return res
+      .status(404)
+      .send({ message: 'não existem personagens com esse nome' });
+  }
+
+  return res.send({
+    chars: chars.map((char) => ({
+      id: char._id,
+      nome: char.nome,
+      desc: char.desc,
+      foto: char.foto,
+    })),
+  });
+};
+
 const findCharactersByIdController = async (req, res) => {
   const idParam = req.params.id;
 
@@ -64,6 +85,7 @@ const deleteCharacterController = async (req, res) => {
 module.exports = {
   homeCharacterController,
   findCharactersController,
+  findByNameController,
   findCharactersByIdController,
   addCharacterController,
   updateCharacterController,

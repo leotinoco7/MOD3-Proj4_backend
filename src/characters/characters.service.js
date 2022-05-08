@@ -10,6 +10,13 @@ const findCharacterByIdService = async (id) => {
   return character;
 };
 
+const findCharacterByNameService = (message) =>
+  Tweet.find({
+    message: { $regex: `${message || ''}`, $options: 'i' },
+  })
+    .sort({ _id: -1 })
+    .populate('user');
+
 const addCharacterService = async (newCharacter) => {
   const characterCriado = await Character.create(newCharacter);
   return characterCriado;
@@ -30,6 +37,7 @@ const deleteCharacterService = async (id) => {
 module.exports = {
   findCharactersService,
   findCharacterByIdService,
+  findCharacterByNameService,
   addCharacterService,
   updateCharacterService,
   deleteCharacterService,
