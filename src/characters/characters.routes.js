@@ -8,6 +8,7 @@ router.use('/api-docs', swaggerUi.serve);
 router.get('/api-docs', swaggerUi.setup(swaggerDocument));
 
 const charactersController = require('../characters/characters.controller');
+
 const {
   validId,
   validObjectBody,
@@ -16,34 +17,36 @@ const {
 router.get('/', charactersController.findCharactersController);
 
 router.get(
-  '/search',
-  authMiddleware,
-  charactersController.findByNameController,
-);
-
-router.get(
   '/find/:id',
+  authMiddleware,
   validId,
   charactersController.findCharactersByIdController,
 );
 
 router.post(
   '/create',
+  authMiddleware,
   validObjectBody,
   charactersController.addCharacterController,
 );
 
 router.put(
   '/update/:id',
+  authMiddleware,
   validId,
   validObjectBody,
   charactersController.updateCharacterController,
 );
 
-router.get('/find-by-name/:nome', charactersController.findByNameController);
+router.get(
+  '/find-by-name/:nome',
+  authMiddleware,
+  charactersController.findByNameController,
+);
 
 router.delete(
   '/delete/:id',
+  authMiddleware,
   validId,
   charactersController.deleteCharacterController,
 );

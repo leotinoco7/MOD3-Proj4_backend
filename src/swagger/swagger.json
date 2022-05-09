@@ -25,6 +25,7 @@
         "summary": "Lista de todos os personagens",
         "description": "Rota responsável por listar todos os personagens",
         "tags": ["Personagens"],
+        "security": [{ "bearerAuth": [] }],
         "responses": {
           "404": {
             "description": "Not Found"
@@ -47,6 +48,7 @@
         "summary": "Criar um novo usuário",
         "description": "Rota responsável por criar um novo usuário",
         "tags": ["Users"],
+        "security": [{ "bearerAuth": [] }],
         "requestBody": {
           "content": {
             "application/json": {
@@ -71,6 +73,7 @@
         "summary": "Busca um personagem por ID",
         "description": "Rota responsável por buscar um personagem pelo ID",
         "tags": ["Personagens"],
+        "security": [{ "bearerAuth": [] }],
         "parameters": [
           {
             "name": "id",
@@ -101,6 +104,7 @@
         "summary": "Busca um personagem pelo nome",
         "description": "Rota responsável por buscar um personagem pelo nome",
         "tags": ["Personagens"],
+        "security": [{ "bearerAuth": [] }],
         "parameters": [
           {
             "name": "nome",
@@ -131,6 +135,7 @@
         "summary": "Cadastrar umpersonagem ",
         "description": "Rota responsável por cadastrar um personagem",
         "tags": ["Personagens"],
+        "security": [{ "bearerAuth": [] }],
         "requestBody": {
           "content": {
             "application/json": {
@@ -171,6 +176,7 @@
         "summary": "Buscar todos os usuários",
         "description": "Rota responsável por buscar todos os usuários",
         "tags": ["Users"],
+        "security": [{ "bearerAuth": [] }],
         "responses": {
           "400": {
             "description": "Not Found"
@@ -193,6 +199,7 @@
         "summary": "Editar um personagem pelo ID",
         "description": "Rota responsável por editar um personagem pelo ID",
         "tags": ["Personagens"],
+        "security": [{ "bearerAuth": [] }],
         "parameters": [
           {
             "name": "id",
@@ -241,6 +248,7 @@
         "summary": "Logar na API",
         "description": "Rota responsável fazer o login de um user cadastrado",
         "tags": ["Auth"],
+        "security": [{ "bearerAuth": [] }],
         "requestBody": {
           "content": {
             "application/json": {
@@ -248,8 +256,8 @@
               "examples": {
                 "User": {
                   "value": {
-                    "email": "joao@gmail.com",
-                    "password": "12345"
+                    "email": "ltinoco@blue.com",
+                    "password": "blue2022"
                   }
                 }
               }
@@ -271,6 +279,7 @@
         "summary": "Apagar um personagem pelo ID",
         "description": "Rota responsável por apagar um personagem pelo ID",
         "tags": ["Personagens"],
+        "security": [{ "bearerAuth": [] }],
         "parameters": [
           {
             "name": "id",
@@ -290,18 +299,27 @@
       }
     },
     "components": {
-      "Characters": {
-        "characters": {
-          "type": "object",
-          "properties": {
-            "nome": {
-              "type": "string"
-            },
-            "desc": {
-              "type": "string"
-            },
-            "foto": {
-              "type": "string"
+      "securitySchemes": {
+        "bearerAuth": {
+          "type": "http",
+          "scheme": "bearer",
+          "bearerFormat": "JWT"
+        }
+      },
+      "schemas": {
+        "Characters": {
+          "characters": {
+            "type": "object",
+            "properties": {
+              "nome": {
+                "type": "string"
+              },
+              "desc": {
+                "type": "string"
+              },
+              "foto": {
+                "type": "string"
+              }
             }
           }
         }
