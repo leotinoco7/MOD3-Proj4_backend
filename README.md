@@ -20,6 +20,9 @@ Para visualização em servidor local:
 npm run dev
 ```
 
+Caso deseje rodar localmente, atente-se aos arquivos de COLLECTION e ENVIRONMENT já dispostos, além da configuração do .env
+
+
 ## 🛠️ Construído com
 
 - NodeJS - Engine
