@@ -11,11 +11,11 @@ const findCharacterByIdService = async (id) => {
 };
 
 const findCharacterByNameService = (message) =>
-  Tweet.find({
+  Characters.find({
     message: { $regex: `${message || ''}`, $options: 'i' },
   })
     .sort({ _id: -1 })
-    .populate('user');
+    .populate('character');
 
 const addCharacterService = async (newCharacter) => {
   const characterCriado = await Character.create(newCharacter);
