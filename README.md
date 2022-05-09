@@ -22,7 +22,7 @@ Para visualização em servidor local:
 npm run dev
 ```
 
-Caso deseje rodar localmente, atente-se aos arquivos de COLLECTION e ENVIRONMENT já dispostos, além da configuração do .env
+Caso deseje rodar localmente, atente-se aos arquivos de [b]COLLECTION[/b] e [b]ENVIRONMENT[/b] já dispostos, além da configuração do .env (utilize o .env.example como base)
 
 
 ## 🛠️ Construído com
