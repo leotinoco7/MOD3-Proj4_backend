@@ -4,9 +4,9 @@ Projeto para construir o back-end no modelo CRUD de um cadastro de personagens, 
 
 ### 📋 Pré-requisitos
 
-Este projeto conta com deploy no Render, você pode acessar a [API Ricky and Morty - Render](https://rickynmmorty-api.onrender.com/characters/api-docs).
+Este projeto conta com deploy no Render, você pode acessar a [API Ricky and Morty - Render](https://proj4-api.onrender.com/).
 
-Você tambem pode rodar a aplicação localmente, mais detalhes no [package.json](https://github.com/leotinoco7/MOD3-PROJ3/blob/main/package.json). <br><br>
+Você tambem pode rodar a aplicação localmente, mais detalhes no [package.json](https://github.com/leotinoco7/MOD3-Proj4_backend/blob/main/package.json). <br><br>
 
 Código de instalação:
 
@@ -28,4 +28,4 @@ npm run dev
 
 ## 📄 Licença
 
-Este projeto está sob a licença (GNU General Public License v3.0) - veja o arquivo [LICENSE.md](https://github.com/leotinoco7/MOD3-PROJ1/blob/main/LICENSE) para detalhes.
+Este projeto está sob a licença (GNU General Public License v3.0) - veja o arquivo [LICENSE.md](https://github.com/leotinoco7/MOD3-Proj4_backend/blob/main/LICENSE) para detalhes.
