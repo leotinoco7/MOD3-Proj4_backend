@@ -6,7 +6,7 @@ Projeto para construir o back-end no modelo CRUD de um cadastro de personagens c
     
 ### 📋 Pré-requisitos
 
-Este projeto conta com deploy no Render, você pode acessar a [API Ricky and Morty - Render](https://proj4-api.onrender.com/).
+Este projeto conta com deploy no Render, você pode acessar a [API Ricky and Morty - Render](https://proj4-api.onrender.com/api-docs).
 
 Você tambem pode rodar a aplicação localmente, mais detalhes no [package.json](https://github.com/leotinoco7/MOD3-Proj4_backend/blob/main/package.json). <br><br>
 
