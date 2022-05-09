@@ -11,16 +11,16 @@
   },
   "servers": [
     {
-      "url": "http://localhost:3000/characters",
+      "url": "http://localhost:3000/",
       "description": "API de teste"
     },
     {
-      "url": "https://https://proj4-api.onrender.com/characters",
+      "url": "https://https://proj4-api.onrender.com/",
       "description": "API de produção"
     }
   ],
   "paths": {
-    "/": {
+    "/characters": {
       "get": {
         "summary": "Lista de todos os personagens",
         "description": "Rota responsável por listar todos os personagens",
@@ -50,6 +50,7 @@
         "requestBody": {
           "content": {
             "application/json": {
+              "schema": {},
               "examples": {
                 "Users": {
                   "value": {
@@ -65,7 +66,7 @@
         }
       }
     },
-    "/find/{id}": {
+    "/characters/find/{id}": {
       "get": {
         "summary": "Busca um personagem por ID",
         "description": "Rota responsável por buscar um personagem pelo ID",
@@ -75,6 +76,36 @@
             "name": "id",
             "in": "path",
             "description": "Id do personagem para busca",
+            "required": true
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/characters/find-by-name/{nome}": {
+      "get": {
+        "summary": "Busca um personagem pelo nome",
+        "description": "Rota responsável por buscar um personagem pelo nome",
+        "tags": ["Personagens"],
+        "parameters": [
+          {
+            "name": "nome",
+            "in": "path",
+            "description": "Nome do personagem para busca",
             "required": true
           }
         ],
@@ -135,6 +166,28 @@
         }
       }
     },
+    "/users": {
+      "get": {
+        "summary": "Buscar todos os usuários",
+        "description": "Rota responsável por buscar todos os usuários",
+        "tags": ["Users"],
+        "responses": {
+          "400": {
+            "description": "Not Found"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/update/{id}": {
       "put": {
         "summary": "Editar um personagem pelo ID",
@@ -179,6 +232,36 @@
                 }
               }
             }
+          }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "summary": "Logar na API",
+        "description": "Rota responsável fazer o login de um user cadastrado",
+        "tags": ["Auth"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {},
+              "examples": {
+                "User": {
+                  "value": {
+                    "email": "joao@gmail.com",
+                    "password": "12345"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Not Found"
+          },
+          "200": {
+            "description": "OK"
           }
         }
       }

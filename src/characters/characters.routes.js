@@ -40,6 +40,8 @@ router.put(
   charactersController.updateCharacterController,
 );
 
+router.get('/find-by-name/:nome', charactersController.findByNameController);
+
 router.delete(
   '/delete/:id',
   validId,

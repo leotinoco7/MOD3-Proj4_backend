@@ -10,12 +10,10 @@ const findCharacterByIdService = async (id) => {
   return character;
 };
 
-const findCharacterByNameService = (message) =>
-  Characters.find({
-    message: { $regex: `${message || ''}`, $options: 'i' },
-  })
-    .sort({ _id: -1 })
-    .populate('character');
+const findCharacterByNameService = async (nome) => {
+  const character = await Character.findOne({ nome: nome });
+  return character;
+};
 
 const addCharacterService = async (newCharacter) => {
   const characterCriado = await Character.create(newCharacter);

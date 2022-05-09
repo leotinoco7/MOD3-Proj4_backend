@@ -11,24 +11,15 @@ const findCharactersController = async (req, res) => {
 };
 
 const findByNameController = async (req, res) => {
-  const { message } = req.query;
+  const nameParam = req.params.nome;
 
-  const chars = await charactersService.findCharacterByNameService(message);
-
-  if (chars.length === 0) {
-    return res
-      .status(404)
-      .send({ message: 'não existem personagens com esse nome' });
+  const chosenCharacter = await charactersService.findCharacterByNameService(
+    nameParam,
+  );
+  if (!chosenCharacter) {
+    return res.status(404).send({ message: 'personagem não encontrado' });
   }
-
-  return res.send({
-    chars: chars.map((char) => ({
-      id: char._id,
-      nome: char.nome,
-      desc: char.desc,
-      foto: char.foto,
-    })),
-  });
+  res.send(chosenCharacter);
 };
 
 const findCharactersByIdController = async (req, res) => {
