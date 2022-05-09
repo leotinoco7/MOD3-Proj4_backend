@@ -15,7 +15,7 @@
       "description": "API de teste"
     },
     {
-      "url": "https://mod3-proj3-api.onrender.com/characters",
+      "url": "https://https://proj4-api.onrender.com/characters",
       "description": "API de produção"
     }
   ],
@@ -35,6 +35,29 @@
               "application/json": {
                 "schema": {
                   "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/create": {
+      "post": {
+        "summary": "Criar um novo usuário",
+        "description": "Rota responsável por criar um novo usuário",
+        "tags": ["Users"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "examples": {
+                "Users": {
+                  "value": {
+                    "name": "João Lima",
+                    "username": "joao",
+                    "email": "joao@gmail.com",
+                    "password": "12345"
+                  }
                 }
               }
             }
