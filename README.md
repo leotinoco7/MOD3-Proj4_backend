@@ -2,7 +2,7 @@
 
 Projeto para construir o back-end no modelo CRUD de um cadastro de personagens com login/criação de usuários, dessa vez utilizando o Moongose como Database e o Swagger para visualizar a API
 
-<img src='https://github.com/leotinoco7/BLUE/blob/main/Modulo_3/spa-twitterclone-main/routes.jpg?raw=true">
+<img src="https://github.com/leotinoco7/BLUE/blob/main/Modulo_3/spa-twitterclone-main/routes.jpg?raw=true">
     
 ### 📋 Pré-requisitos
 
