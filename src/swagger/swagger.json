@@ -192,7 +192,7 @@
         }
       }
     },
-    "/update/{id}": {
+    "/characters/update/{id}": {
       "put": {
         "summary": "Editar um personagem pelo ID",
         "description": "Rota responsável por editar um personagem pelo ID",
@@ -271,7 +271,7 @@
         }
       }
     },
-    "/delete/{id}": {
+    "/characters/delete/{id}": {
       "delete": {
         "summary": "Apagar um personagem pelo ID",
         "description": "Rota responsável por apagar um personagem pelo ID",
