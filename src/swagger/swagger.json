@@ -48,7 +48,6 @@
         "summary": "Criar um novo usuário",
         "description": "Rota responsável por criar um novo usuário",
         "tags": ["Users"],
-        "security": [{ "bearerAuth": [] }],
         "requestBody": {
           "content": {
             "application/json": {
@@ -130,12 +129,11 @@
         }
       }
     },
-    "/create": {
+    "/characters/create": {
       "post": {
-        "summary": "Cadastrar umpersonagem ",
+        "summary": "Cadastrar ump ersonagem ",
         "description": "Rota responsável por cadastrar um personagem",
         "tags": ["Personagens"],
-        "security": [{ "bearerAuth": [] }],
         "requestBody": {
           "content": {
             "application/json": {
@@ -248,7 +246,6 @@
         "summary": "Logar na API",
         "description": "Rota responsável fazer o login de um user cadastrado",
         "tags": ["Auth"],
-        "security": [{ "bearerAuth": [] }],
         "requestBody": {
           "content": {
             "application/json": {
