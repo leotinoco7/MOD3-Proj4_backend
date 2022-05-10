@@ -133,9 +133,9 @@
               "examples": {
                 "Tweet": {
                   "value": {
-                    "nome": "",
-                    "desc": "Teste de tweet do Swagger",
-                    "foto": ""
+                    "nome": "123",
+                    "desc": "Teste de create do Swagger",
+                    "foto": "123"
                   }
                 }
               }
@@ -355,7 +355,7 @@
           }
         }
       },
-      "Character": {
+      "Characters": {
         "type": "object",
         "properties": {
           "nome": {
