@@ -10,7 +10,7 @@
   },
   "servers": [
     {
-      "url": "https://https://proj4-api.onrender.com/",
+      "url": "https://proj4-api.onrender.com/",
       "description": "API no Heroku"
     },
     {
