@@ -3,7 +3,6 @@
   "info": {
     "title": "API Ricky and Morty",
     "description": "API para CRUD de ricky and morty",
-    "termsOfService": "",
     "contact": {
       "email": "leofptinoco7@gmail.com"
     },
@@ -11,38 +10,15 @@
   },
   "servers": [
     {
-      "url": "http://localhost:3000/",
-      "description": "API de teste"
+      "url": "https://https://proj4-api.onrender.com/",
+      "description": "API no Heroku"
     },
     {
-      "url": "https://https://proj4-api.onrender.com/",
-      "description": "API de produção"
+      "url": "http://localhost:3000",
+      "description": "API local"
     }
   ],
   "paths": {
-    "/characters": {
-      "get": {
-        "summary": "Lista de todos os personagens",
-        "description": "Rota responsável por listar todos os personagens",
-        "tags": ["Personagens"],
-        "security": [{ "bearerAuth": [] }],
-        "responses": {
-          "404": {
-            "description": "Not Found"
-          },
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/users/create": {
       "post": {
         "summary": "Criar um novo usuário",
@@ -51,11 +27,13 @@
         "requestBody": {
           "content": {
             "application/json": {
-              "schema": {},
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              },
               "examples": {
                 "Users": {
                   "value": {
-                    "name": "João Lima",
+                    "name": "Joao",
                     "username": "joao",
                     "email": "joao@gmail.com",
                     "password": "12345"
@@ -64,104 +42,18 @@
               }
             }
           }
-        }
-      }
-    },
-    "/characters/find/{id}": {
-      "get": {
-        "summary": "Busca um personagem por ID",
-        "description": "Rota responsável por buscar um personagem pelo ID",
-        "tags": ["Personagens"],
-        "security": [{ "bearerAuth": [] }],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "Id do personagem para busca",
-            "required": true
-          }
-        ],
-        "responses": {
-          "400": {
-            "description": "Bad Request"
-          },
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/characters/find-by-name/{nome}": {
-      "get": {
-        "summary": "Busca um personagem pelo nome",
-        "description": "Rota responsável por buscar um personagem pelo nome",
-        "tags": ["Personagens"],
-        "security": [{ "bearerAuth": [] }],
-        "parameters": [
-          {
-            "name": "nome",
-            "in": "path",
-            "description": "Nome do personagem para busca",
-            "required": true
-          }
-        ],
-        "responses": {
-          "400": {
-            "description": "Bad Request"
-          },
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/characters/create": {
-      "post": {
-        "summary": "Cadastrar ump ersonagem ",
-        "description": "Rota responsável por cadastrar um personagem",
-        "tags": ["Personagens"],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object"
-              },
-              "examples": {
-                "Personagens": {
-                  "value": {
-                    "nome": "Summer Smith",
-                    "desc": "Irmã.",
-                    "foto": "https://cm-ob.pt/img/lists/07/15-best-rick-morty-characters-2.jpg"
-                  }
-                }
-              }
-            }
-          }
         },
         "responses": {
           "400": {
-            "description": "Bad Request"
+            "description": "Not Found"
           },
           "201": {
             "description": "Created",
             "content": {
               "application/json": {
-                "schema": {
-                  "type": "object"
+                "schemma": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/User"
                 }
               }
             }
@@ -174,7 +66,6 @@
         "summary": "Buscar todos os usuários",
         "description": "Rota responsável por buscar todos os usuários",
         "tags": ["Users"],
-        "security": [{ "bearerAuth": [] }],
         "responses": {
           "400": {
             "description": "Not Found"
@@ -184,10 +75,210 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/User"
+                  }
                 }
               }
             }
+          }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "summary": "Entrar na API",
+        "description": "Rota responsável fazer o login de um user cadastrado",
+        "tags": ["Auth"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              },
+              "examples": {
+                "User": {
+                  "value": {
+                    "email": "ltinoco@blue.com",
+                    "password": "blue2022"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Not Found"
+          },
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/characters/create": {
+      "post": {
+        "summary": "Criar um novo personagem",
+        "description": "Rota responsável por criar um novo personagem",
+        "tags": ["Characters"],
+        "security": [{ "bearerAuth": [] }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Characters"
+              },
+              "examples": {
+                "Tweet": {
+                  "value": {
+                    "nome": "",
+                    "desc": "Teste de tweet do Swagger",
+                    "foto": ""
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          },
+          "400": {
+            "description": "Not Found"
+          },
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schemma": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Characters"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/characters": {
+      "get": {
+        "summary": "Buscar todos os personagens",
+        "description": "Rota responsável por buscar todos os personagens",
+        "tags": ["Characters"],
+        "security": [{ "bearerAuth": [] }],
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          },
+          "400": {
+            "description": "Not Found"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Characters"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/characters/find/{id}": {
+      "get": {
+        "summary": "Buscar tweet por id",
+        "description": "Rota responsável por buscar um personagem pelo ID",
+        "tags": ["Characters"],
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id do personagem para busca",
+            "required": true
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          },
+          "400": {
+            "description": "Not Found"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Characters"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/characters/find-by-name/{nome}": {
+      "get": {
+        "summary": "Busca um personagem pelo nome",
+        "description": "Rota responsável por buscar um personagem pelo nome",
+        "tags": ["Characters"],
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "nome",
+            "in": "path",
+            "description": "Nome do personagem para busca",
+            "required": true
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          },
+          "400": {
+            "description": "Not Found"
+          },
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/characters/delete/{id}": {
+      "delete": {
+        "summary": "Apagar um personagem pelo ID",
+        "description": "Rota responsável por apagar um personagem pelo ID",
+        "tags": ["Personagens"],
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id do personagem para deleção",
+            "required": true
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          },
+          "400": {
+            "description": "Not Found"
+          },
+          "200": {
+            "description": "OK"
           }
         }
       }
@@ -225,43 +316,9 @@
           }
         },
         "responses": {
-          "400": {
-            "description": "Bad Request"
+          "401": {
+            "description": "Unauthorized"
           },
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/auth/login": {
-      "post": {
-        "summary": "Logar na API",
-        "description": "Rota responsável fazer o login de um user cadastrado",
-        "tags": ["Auth"],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {},
-              "examples": {
-                "User": {
-                  "value": {
-                    "email": "ltinoco@blue.com",
-                    "password": "blue2022"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
           "400": {
             "description": "Not Found"
           },
@@ -270,54 +327,45 @@
           }
         }
       }
-    },
-    "/characters/delete/{id}": {
-      "delete": {
-        "summary": "Apagar um personagem pelo ID",
-        "description": "Rota responsável por apagar um personagem pelo ID",
-        "tags": ["Personagens"],
-        "security": [{ "bearerAuth": [] }],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "Id do personagem para deleção",
-            "required": true
-          }
-        ],
-        "responses": {
-          "400": {
-            "description": "Bad Request"
-          },
-          "200": {
-            "description": "OK"
-          }
-        }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
       }
     },
-    "components": {
-      "securitySchemes": {
-        "bearerAuth": {
-          "type": "http",
-          "scheme": "bearer",
-          "bearerFormat": "JWT"
+    "schemas": {
+      "User": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
         }
       },
-      "schemas": {
-        "Characters": {
-          "characters": {
-            "type": "object",
-            "properties": {
-              "nome": {
-                "type": "string"
-              },
-              "desc": {
-                "type": "string"
-              },
-              "foto": {
-                "type": "string"
-              }
-            }
+      "Character": {
+        "type": "object",
+        "properties": {
+          "nome": {
+            "type": "string"
+          },
+          "desc": {
+            "type": "string"
+          },
+          "foto": {
+            "type": "number"
           }
         }
       }
