@@ -65,6 +65,7 @@
       "get": {
         "summary": "Buscar todos os usuários",
         "description": "Rota responsável por buscar todos os usuários",
+        "security": [{ "bearerAuth": [] }],
         "tags": ["Users"],
         "responses": {
           "400": {
